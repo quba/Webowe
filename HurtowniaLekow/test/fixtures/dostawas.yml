@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  Ilosc: 1
+  CenaDostawy: 1
+  DataZamowienia: 2011-03-26
+  DataRealizacji: 2011-03-26
+
+two:
+  Ilosc: 1
+  CenaDostawy: 1
+  DataZamowienia: 2011-03-26
+  DataRealizacji: 2011-03-26

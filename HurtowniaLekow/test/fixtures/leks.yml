@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  NazwaLeku: MyString
+  Cena: 1
+  Ilosc: 1
+  Uwagi: MyString
+
+two:
+  NazwaLeku: MyString
+  Cena: 1
+  Ilosc: 1
+  Uwagi: MyString
