@@ -10,10 +10,10 @@ gem "compass", ">= 0.10.6"
 gem "haml-rails"
 
 # potrzebne dla html2haml - funkcji konwertujacej pliki html do haml-owego formatu
-group :development do
-  gem "hpricot"
-  gem "ruby_parser"
-end
+#group :development do
+#  gem "hpricot"
+#  gem "ruby_parser"
+#end
 # Use unicorn as the web server
 # gem 'unicorn'
 
