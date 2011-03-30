@@ -7,9 +7,13 @@ gem 'rails', '3.0.5'
 
 gem 'mysql2'
 gem "compass", ">= 0.10.6"
-gem "haml"
+gem "haml-rails"
 
-
+# potrzebne dla html2haml - funkcji konwertujacej pliki html do haml-owego formatu
+group :development do
+  gem "hpricot"
+  gem "ruby_parser"
+end
 # Use unicorn as the web server
 # gem 'unicorn'
 
