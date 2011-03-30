@@ -1,4 +1,7 @@
 HurtowniaLekow::Application.routes.draw do
+
+  get "stronaglowna/index"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -48,7 +51,7 @@ HurtowniaLekow::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => "welcome#index"
+  root :to => "stronaglowna#index"
 
   # See how all your routes lay out with "rake routes"
 
