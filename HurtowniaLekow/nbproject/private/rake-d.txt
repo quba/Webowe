@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 about=List versions of all Rails frameworks and the environment
 db\:abort_if_pending_migrations=
 db\:charset=
@@ -88,3 +89,5 @@ tmp\:create=Creates tmp directories for sessions, cache, sockets, and pids
 tmp\:pids\:clear=
 tmp\:sessions\:clear=
 tmp\:sockets\:clear=
+=======
+>>>>>>> f4f82ab7fe592a1b27ce284bd34a7c4235cd310d
