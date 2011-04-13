@@ -10,4 +10,8 @@ class Pracownik < ActiveRecord::Base
   validates :NIP, :presence => true  
   validates :Telefon, :presence => true
   validates :Email, :presence => true
+
+  has_one :uzytkownik
+  has_many :zamowienie_pracownik
+  has_many :zamowienie, :trough => :zamowienie_pracownik
 end

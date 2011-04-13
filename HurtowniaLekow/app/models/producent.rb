@@ -4,4 +4,5 @@ class Producent < ActiveRecord::Base
   validates :Telefon, :presence => true
   validates :Email, :presence => true
 
+  has_many :lek
 end

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HurtowniaLekow</title>
+
+<link rel="stylesheet" href="/stylesheets/blueprint/screen.css" type="text/css" media="screen, projection" />
+<link rel="stylesheet" href="/stylesheets/blueprint/print.css" type="text/css" media="print" />
+<!--[if lt IE 8]>
+  <link rel="stylesheet" href="/stylesheets/blueprint/ie.css" type="text/css" media="screen, projection" />
+<![endif]-->
+<!-- nie chcemy chyba tych archaicznych buttonow
+<link rel="stylesheet" href="/stylesheets/blueprint/plugins/buttons/screen.css" type="text/css" media="screen, projection" />
+-->
+<link rel="stylesheet" href="/stylesheets/style.css" type="text/css" media="screen, projection" />
+</head>
+<body>
+<div class="container">
+	<div class="top"></div>
+	<br />
+        <% if !alert.nil? %>
+        <p class="alert"><%= alert %></p>
+        <% end %>
+        <% if !notice.nil? %>
+        <p class="notice"><%= notice %></p>
+        <% end %>
+        
+          <%- if user_signed_in? %>
+            <div id="userpanel" class="tablebg">
+              <p>
+            <%= "Zalogowany jako #{current_user.email}." %>
+            <%= link_to 'Wyloguj się', destroy_user_session_path %>
+              </p>
+            </div>
+          <%- else %>
+            <%= link_to 'Zaloguj się', new_user_session_path %>
+          <%- end %>
+        </p>
+	<div id="sidebar">
+		<ul>
+			<li><a href="/" title="Przejście do strony głównej systemu">Strona główna</a></li>
+                        <li><a href="/" title="Jakaś podstrona">Jakaś podstrona</a></li>
+                </ul>
+	</div>
+        <div class="content">
+                <%= yield %>
+               
+ <!-- przyklady przyciskow - mozesz odkomentowac razem z linkiem do css w headzie
+                <button type="submit" class="button positive">
+    <img src="stylesheets/blueprint/plugins/buttons/icons/tick.png" alt=""/> Save
+  </button>
+
+  <a class="button" href="/password/reset/">
+    <img src="stylesheets/blueprint/plugins/buttons/icons/key.png" alt=""/> Change Password
+  </a>
+
+  <a href="#" class="button negative">
+    <img src="stylesheets/blueprint/plugins/buttons/icons/cross.png" alt=""/> Cancel
+  </a>
+ -->
+        </div>
+        <div class="footer">Copyright Jakub Bomba, Jacek Cisło</div>
+</div>
+</body>
+</html>

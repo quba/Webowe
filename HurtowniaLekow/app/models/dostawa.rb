@@ -4,4 +4,5 @@ class Dostawa < ActiveRecord::Base
   validates :CenaDostawy, :presence => true
   validates :DataZamowienia, :presence => true
 
+  has_one :lek
 end

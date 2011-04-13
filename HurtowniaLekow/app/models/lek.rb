@@ -4,4 +4,7 @@ class Lek < ActiveRecord::Base
   validates :producent_id, :presence => true
   validates :Cena, :presence => true
   validates :Ilosc, :presence => true
+
+  has_one :producent
+  has_many :zamowienie
 end

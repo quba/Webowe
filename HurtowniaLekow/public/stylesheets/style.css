@@ -1,0 +1,213 @@
+/* -----------------------------------------------------------------------
+
+Base CSS file; Authors: Jakub Bomba, Jacek Cisło
+
+----------------------------------------------------------------------- */
+
+body {
+	margin-top: 0px;
+	background:#fff url("/images/bg.png") repeat-x 50% 0;
+	font: 81.25%/180% Helvetica, Verdana, Tahoma, Arial, sans-serif;
+	color:#4c5559;
+	height: 100%;
+	}
+
+a {
+	color: #069;
+	text-decoration: none;
+}
+
+p {
+	margin: 0 0 1em 0;
+	text-align: justify;
+}
+
+.container {
+	width: 830px;
+	margin: 25px auto;
+}
+.top {
+	clear: both;
+	height: 120px;
+	background: url('/images/logo.png') no-repeat;
+	border: none;
+}
+
+#sidebar {
+	background: #ced3d9;
+	float: left;
+	width: 210px;
+	height: auto;
+	border: none;
+	padding: 5px 5px 8px 5px;
+	margin: 3px 0px 0px 0px;
+}
+
+	#sidebar ul {
+		padding: 0;
+		width: 100%;
+	}
+
+		#sidebar ul li {
+			list-style-type: none !important;
+			width: 210px;
+		}
+
+			#sidebar ul li a {
+				background: url('./images/sidebar-ul-li-a.png') no-repeat 5px 50%;
+				color: #555;
+				display: block;
+				font-weight: bold;
+				padding: 2px 0 2px 22px;
+			}
+
+				#sidebar ul li a:hover {
+					background-color: #fff;
+				}
+.content {
+	float: right;
+	border: none;
+	width: 580px;
+	height: auto;
+	margin: 3px 0px 0px 4px;
+}
+.footer {
+	clear: both;
+	border: none;
+	bottom: 15px;
+	font-weight: bold;
+	margin: 0;
+/*	position: absolute; */
+	text-align: center;
+	width: 830px;
+}
+
+ul {
+	margin: 0;
+  	padding: 0;
+}
+
+li {
+     	list-style-type: none;
+     	margin: 0;
+     	padding: 0px;
+     	width: 140px;
+	height: 25px;
+}
+
+li a {
+	display: block;
+     	background: white;
+     	color: black;
+}
+
+li a:hover {
+	background: #53A32A;
+	color: white;
+}
+
+.tablebg td {
+	padding: 2px 10px;
+	background-image: url("/images/td.png");
+	background-repeat: repeat-x;
+}
+
+table {
+width: 100%;
+}
+.tablebg table td {
+	background: transparent !important;
+}
+
+.tablebg tr {
+	background-color: #e5e5e5;
+}
+
+.tablebg tr:nth-child(2n+1) {
+	background-color: #d9d9d9;
+}
+.tablebg {
+	background: #fff;
+	border: 1px #b6bcbf solid;
+	border-spacing: 1px;
+	border-collapse: separate;
+	-khtml-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	-moz-box-shadow: 0 1px 0 #fff;
+	-webkit-box-shadow: 0 1px 0 #fff;
+	-moz-box-shadow: 0 1px 0 #fff;
+	-webkit-box-shadow: 0 1px 0 #fff;
+	box-shadow: 0 1px 0 #fff;
+	clear: both;
+	width: 100%;
+}
+
+.tablebg tr:first-child td:first-child, .tablebg tr:first-child th:first-child {
+	-khtml-border-top-left-radius: 3px;
+	-moz-border-radius-topleft: 3px;
+	-webkit-border-top-left-radius: 3px;
+	border-top-left-radius: 3px;
+}
+
+.tablebg tr:first-child td:last-child, .tablebg tr:first-child th:last-child {
+	-khtml-border-top-right-radius: 3px;
+	-moz-border-radius-topright: 3px;
+	-webkit-border-top-right-radius: 3px;
+	border-top-right-radius: 3px;
+}
+
+.tablebg tr:last-child td:first-child, .tablebg tr:last-child th:first-child {
+	-khtml-border-bottom-left-radius: 3px;
+	-moz-border-radius-bottomleft: 3px;
+	-webkit-border-bottom-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+}
+
+.tablebg tr:last-child td:last-child, .tablebg tr:last-child th:last-child {
+	-khtml-border-bottom-right-radius: 3px;
+	-moz-border-radius-bottomright: 3px;
+	-webkit-border-bottom-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+}
+
+th, #userpanel p {
+	background: url("/images/th.png") 50% 50% repeat-x;
+	color: #fff;
+	font-weight: bold;
+	padding: 7px 15px;
+	text-shadow: 0 3px 3px rgba(0,0,0,0.25);
+	white-space: nowrap;
+}
+
+#userpanel p {
+	margin: 1px;
+}
+
+#userpanel p a {
+	color: #b2d9ff;
+}
+
+input[type=text] {
+	width: 300px;
+}
+
+input[type=submit] {
+	margin: 0.5em 0 0 8.3em;
+	padding: 0 10px;
+}
+
+form label {
+	display: inline-block;
+	text-align: right;
+	margin: 0 0.5em 0 0;
+	width: 8em;
+}
+
+#userpanel p, ul li a:hover, #sidebar {
+	-khtml-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}}
