@@ -9,5 +9,5 @@ class Klient < ActiveRecord::Base
   validates :Telefon, :presence => true
   validates :Email, :presence => true
 
-  has_one :uzytkownik
+  belongs_to :uzytkownik
 end

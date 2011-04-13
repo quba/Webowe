@@ -4,7 +4,7 @@ class Uzytkownik < ActiveRecord::Base
   validates :Haslo, :presence => true
   validates :Typ, :presence => true
 
-  has_many :zamowienie
-  belongs_to :klient
-  belongs_to :pracownik
+  has_many :zamowienies
+  has_one :klient
+  has_one :pracownik
 end

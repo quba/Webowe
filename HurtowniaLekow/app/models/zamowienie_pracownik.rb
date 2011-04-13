@@ -1,4 +1,4 @@
 class ZamowieniePracownik < ActiveRecord::Base
   belongs_to :pracownik
-  has_many :zamowienie
+  belongs_to :zamowienie
 end

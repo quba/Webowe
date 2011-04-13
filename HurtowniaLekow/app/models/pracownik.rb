@@ -11,7 +11,7 @@ class Pracownik < ActiveRecord::Base
   validates :Telefon, :presence => true
   validates :Email, :presence => true
 
-  has_one :uzytkownik
-  has_many :zamowienie_pracownik
-  has_many :zamowienie, :trough => :zamowienie_pracownik
+  belongs_to :uzytkownik
+  has_many :zamowienie_pracowniks
+  has_many :zamowienies, :through => :zamowienie_pracowniks
 end

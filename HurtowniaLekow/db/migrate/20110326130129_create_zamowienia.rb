@@ -11,12 +11,12 @@ class CreateZamowienia < ActiveRecord::Migration
       #t.timestamps
     end
     #add a foreign key
-    execute <<-SQL
-      ALTER TABLE zamowienia
-        ADD CONSTRAINT fk_zamowienia_uzytkownicy
-        FOREIGN KEY (uzytkownik_id)
-        REFERENCES uzytkownicy(id)
-    SQL
+    #execute <<-SQL
+    #  ALTER TABLE zamowienia
+    #    ADD CONSTRAINT fk_zamowienia_uzytkownicy
+    #    FOREIGN KEY (uzytkownik_id)
+    #    REFERENCES uzytkownicy(id)
+    #SQL
     #add a foreign key
     execute <<-SQL
       ALTER TABLE zamowienia

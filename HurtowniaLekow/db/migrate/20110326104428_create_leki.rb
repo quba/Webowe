@@ -9,12 +9,12 @@ class CreateLeki < ActiveRecord::Migration
       #t.timestamps
     end
     #add a foreign key
-    execute <<-SQL
-      ALTER TABLE leki
-        ADD CONSTRAINT fk_leki_producenci
-        FOREIGN KEY (producent_id)
-        REFERENCES producenci(id)
-    SQL
+    #execute <<-SQL
+    #  ALTER TABLE leki
+    #    ADD CONSTRAINT fk_leki_producenci
+    #    FOREIGN KEY (producent_id)
+    #    REFERENCES producenci(id)
+    #SQL
 
   end
 

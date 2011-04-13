@@ -5,6 +5,7 @@ class Lek < ActiveRecord::Base
   validates :Cena, :presence => true
   validates :Ilosc, :presence => true
 
-  has_one :producent
-  has_many :zamowienie
+  belongs_to :producent
+  has_many :zamowienies
+  has_many :dostawas
 end

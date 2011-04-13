@@ -5,8 +5,8 @@ class Zamowienie < ActiveRecord::Base
   validates :DataZamowienia, :presence => true
 
   belongs_to  :uzytkownik
-  has_one :lek
-  has_one :zamowienie_pracownik
-  has_one :pracownik, :trough => :zamowienie_pracownik
+  belongs_to :lek
+  has_many :zamowienie_pracowniks
+  has_many :pracowniks, :through => :zamowienie_pracowniks
 
 end

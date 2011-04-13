@@ -10,12 +10,12 @@ class CreateDostawy < ActiveRecord::Migration
       #t.timestamps
     end
     #add a foreign key
-    execute <<-SQL
-    ALTER TABLE dostawy
-      ADD CONSTRAINT fk_dostawy_leki
-      FOREIGN KEY(lek_id)
-      REFERENCES leki(id)
-    SQL
+    #execute <<-SQL
+    #ALTER TABLE dostawy
+    #  ADD CONSTRAINT fk_dostawy_leki
+    #  FOREIGN KEY(lek_id)
+    #  REFERENCES leki(id)
+    #SQL
 
   end
 
