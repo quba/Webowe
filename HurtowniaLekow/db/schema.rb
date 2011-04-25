@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110410140647) do
+ActiveRecord::Schema.define(:version => 20110425102449) do
 
   create_table "dostawy", :force => true do |t|
     t.integer "lek_id",         :null => false
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(:version => 20110410140647) do
 
   add_index "dostawy", ["lek_id"], :name => "fk_dostawy_leki"
 
-  create_table "klienci", :primary_key => "uzytkownik_id", :force => true do |t|
+  create_table "klients", :primary_key => "uzytkownik_id", :force => true do |t|
     t.string "NazwaKlienta", :null => false
     t.string "Miasto",       :null => false
     t.string "KodPocztowy",  :null => false
@@ -33,8 +33,8 @@ ActiveRecord::Schema.define(:version => 20110410140647) do
     t.string "Email",        :null => false
   end
 
-  add_index "klienci", ["NazwaKlienta"], :name => "index_klienci_on_NazwaKlienta", :unique => true
-  add_index "klienci", ["uzytkownik_id"], :name => "index_klienci_on_uzytkownik_id", :unique => true
+  add_index "klients", ["NazwaKlienta"], :name => "index_klienci_on_NazwaKlienta", :unique => true
+  add_index "klients", ["uzytkownik_id"], :name => "index_klienci_on_uzytkownik_id", :unique => true
 
   create_table "leki", :force => true do |t|
     t.string  "NazwaLeku",    :null => false
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(:version => 20110410140647) do
 
   add_index "leki", ["producent_id"], :name => "fk_leki_producenci"
 
-  create_table "pracownicy", :primary_key => "uzytkownik_id", :force => true do |t|
+  create_table "pracowniks", :primary_key => "uzytkownik_id", :force => true do |t|
     t.string "Nazwisko"
     t.string "Imie"
     t.string "Miasto",           :null => false
@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(:version => 20110410140647) do
     t.string "Email",            :null => false
   end
 
-  add_index "pracownicy", ["uzytkownik_id"], :name => "index_pracownicy_on_uzytkownik_id", :unique => true
+  add_index "pracowniks", ["uzytkownik_id"], :name => "index_pracownicy_on_uzytkownik_id", :unique => true
 
   create_table "producenci", :force => true do |t|
     t.string "NazwaProducenta", :null => false

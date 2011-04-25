@@ -1,2 +1,19 @@
-<h1>Stronaglowna#index</h1>
-<p>Find me in app/views/stronaglowna/index.html.erb ;)</p>
+<h1>Hurtownia leków</h1>
+        <%- if user_signed_in? %>
+            <div class="content">              
+            <%= "Witaj #{current_user.email}!" %>            
+            <%- if Klient.exists?(:uzytkownik_id => current_user.id) %>
+                  <p><%= "Jesteś klientem." %></p>              
+            <%- elsif Pracownik.exists?(:uzytkownik_id => current_user.id) %>
+                  <p><%= "Jesteś pracownikiem." %></p>
+            <%- else %>
+                  <p><%= "Jesteś adminem, kierownikiem. " %></p>
+            <%- end %>            
+                  <p><%= "Zapraszamy do obejrzenia naszej bogatej oferty leków." %> </p>
+            </div>
+         <%- else %>
+              <p>
+                <%= "Zaloguj się, aby móc poruszać się po stronie." %>
+              </p>
+         <%- end %>
+

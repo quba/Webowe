@@ -34,11 +34,22 @@
           <%- else %>
             <%= link_to 'Zaloguj się', new_user_session_path %>
           <%- end %>
-        </p>
+        <p></p>
 	<div id="sidebar">
-		<ul>
-			<li><a href="/" title="Przejście do strony głównej systemu">Strona główna</a></li>
-                        <li><a href="/" title="Jakaś podstrona">Jakaś podstrona</a></li>
+		<ul>			
+                        <li><%= link_to "Strona główna", :index, :title => "Przejście do strony głównej systemu" %> </li>
+                        <li><%= link_to "Podstrona", :index, :title => "Jakaś podstrona" %> </li>
+                        <%- if user_signed_in? and Klient.exists?(:uzytkownik_id => current_user.id) %>
+                          <li><%= link_to "Leki", :index, :title => "Oferta leków naszej hurtowni" %> </li>
+                          <li><%= link_to "Zamówienia", :index, :title => "Bieżące zamówienia" %> </li>
+                          <li><%= link_to "Historia", :index, :title => "Historia zamówień" %> </li>
+                        <%- elsif user_signed_in? and Pracownik.exists?(:uzytkownik_id => current_user.id) %>
+                          <li><%= link_to "Zamówienia", :index, :title => "Zamówienia oczekujące na realizację" %> </li>
+                        <%- elsif user_signed_in? %>
+                          <li><%= link_to "Producenci", :index, :title => "Zarządzaj producentami" %> </li>
+                          <li><%= link_to "Pracownicy", :index, :title => "Zarządzaj pracownikami" %> </li>
+                          <li><%= link_to "Leki", :index, :title => "Zarządzaj lekami" %> </li>
+                        <%- end %>
                 </ul>
 	</div>
         <div class="content">
