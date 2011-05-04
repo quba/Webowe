@@ -1,19 +1,15 @@
 <h1>Hurtownia leków</h1>
-        <%- if user_signed_in? %>
-            <div class="content">              
-            <%= "Witaj #{current_user.email}!" %>            
-            <%- if Klient.exists?(:uzytkownik_id => current_user.id) %>
-                  <p><%= "Jesteś klientem." %></p>              
-            <%- elsif Pracownik.exists?(:uzytkownik_id => current_user.id) %>
+            <div class="content">
+            <%- if klient_signed_in? %>
+            <%= "Witaj #{current_klient.email}!" %>
+                  <p><%= "Jesteś klientem." %></p>
+            <%- elsif pracownik_signed_in? %>
                   <p><%= "Jesteś pracownikiem." %></p>
-            <%- else %>
+            <%- elsif pracownik_signed_in? %> <!-- + typ == admin? -->
                   <p><%= "Jesteś adminem, kierownikiem. " %></p>
-            <%- end %>            
-                  <p><%= "Zapraszamy do obejrzenia naszej bogatej oferty leków." %> </p>
+            <%- else %>
+                  <p><%= "Zaloguj się, by zacząć korzystać z funkcjonalności systemu." %> </p>
+             <%- end %>
+             
             </div>
-         <%- else %>
-              <p>
-                <%= "Zaloguj się, aby móc poruszać się po stronie." %>
-              </p>
-         <%- end %>
-
+        

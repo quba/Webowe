@@ -1,6 +1,9 @@
 HurtowniaLekow::Application.routes.draw do
 
-  devise_for :users
+  devise_for :klients
+
+  devise_for :pracowniks
+
 
   get "stronaglowna/index"
 

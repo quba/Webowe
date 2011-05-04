@@ -2,7 +2,6 @@
 <html>
 <head>
   <title>HurtowniaLekow</title>
-
 <link rel="stylesheet" href="/stylesheets/blueprint/screen.css" type="text/css" media="screen, projection" />
 <link rel="stylesheet" href="/stylesheets/blueprint/print.css" type="text/css" media="print" />
 <!--[if lt IE 8]>
@@ -12,40 +11,41 @@
 <link rel="stylesheet" href="/stylesheets/blueprint/plugins/buttons/screen.css" type="text/css" media="screen, projection" />
 -->
 <link rel="stylesheet" href="/stylesheets/style.css" type="text/css" media="screen, projection" />
+<%= javascript_include_tag 'jquery-1.6', 'rails', 'rails.validations'-%>
 </head>
 <body>
 <div class="container">
 	<div class="top"></div>
 	<br />
         <% if !alert.nil? %>
-        <p class="alert"><%= alert %></p>
+          <p class="alert"><%= alert %></p>
         <% end %>
         <% if !notice.nil? %>
-        <p class="notice"><%= notice %></p>
+          <p class="notice"><%= notice %></p>
         <% end %>
         
-          <%- if user_signed_in? %>
+          <%- if pracownik_signed_in? %>
             <div id="userpanel" class="tablebg">
               <p>
-            <%= "Zalogowany jako #{current_user.email}." %>
-            <%= link_to 'Wyloguj się', destroy_user_session_path %>
+            <%= "Zalogowany jako #{current_pracownik.email}." %>
+            <%= link_to 'Wyloguj się', destroy_pracownik_session_path %>
               </p>
             </div>
           <%- else %>
-            <%= link_to 'Zaloguj się', new_user_session_path %>
+            <%= link_to 'Zaloguj się', new_pracownik_session_path %>
           <%- end %>
         <p></p>
 	<div id="sidebar">
 		<ul>			
                         <li><%= link_to "Strona główna", :index, :title => "Przejście do strony głównej systemu" %> </li>
                         <li><%= link_to "Podstrona", :index, :title => "Jakaś podstrona" %> </li>
-                        <%- if user_signed_in? and Klient.exists?(:uzytkownik_id => current_user.id) %>
+                        <%- if klient_signed_in? %>
                           <li><%= link_to "Leki", :index, :title => "Oferta leków naszej hurtowni" %> </li>
                           <li><%= link_to "Zamówienia", :index, :title => "Bieżące zamówienia" %> </li>
                           <li><%= link_to "Historia", :index, :title => "Historia zamówień" %> </li>
-                        <%- elsif user_signed_in? and Pracownik.exists?(:uzytkownik_id => current_user.id) %>
+                        <%- elsif pracownik_signed_in? %>
                           <li><%= link_to "Zamówienia", :index, :title => "Zamówienia oczekujące na realizację" %> </li>
-                        <%- elsif user_signed_in? %>
+                        <%- elsif klient_signed_in? %>
                           <li><%= link_to "Producenci", :index, :title => "Zarządzaj producentami" %> </li>
                           <li><%= link_to "Pracownicy", :index, :title => "Zarządzaj pracownikami" %> </li>
                           <li><%= link_to "Leki", :index, :title => "Zarządzaj lekami" %> </li>
