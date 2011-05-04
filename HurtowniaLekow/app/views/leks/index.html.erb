@@ -1,0 +1,37 @@
+<%- if user_signed_in? %>
+<h1>Lista leków</h1>
+<table>
+  <tr>
+    <th>Nazwa</th>
+    <th>Producent</th>
+    <th>Cena</th>
+    <th>Ilość</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @leks.each do |lek| %>
+  <tr>    
+    <td><%= lek.NazwaLeku %></td>
+    <td><%= lek.producent.NazwaProducenta %></td>
+    <td><%= lek.Cena %></td>
+    <td><%= lek.Ilosc %></td>
+    <td><%= link_to 'Pokaż', lek %></td>
+    <%- if !(Pracownik.exists?(:uzytkownik_id => current_user.id) or Klient.exists?(:uzytkownik_id => current_user.id)) %>
+    <td><%= link_to 'Edytuj', edit_lek_path(lek) %></td>
+    <td><%= link_to 'Usuń', lek, :confirm => 'Czy na pewno?', :method => :delete %></td>
+    <%- end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<%- if !(Pracownik.exists?(:uzytkownik_id => current_user.id) or Klient.exists?(:uzytkownik_id => current_user.id)) %>
+<%= link_to 'Nowy lek', new_lek_path %>
+<%- end %>
+<%- else %>
+              <p>
+                <%= "Zaloguj się, aby móc poruszać się po stronie." %>
+              </p>
+         <%- end %>

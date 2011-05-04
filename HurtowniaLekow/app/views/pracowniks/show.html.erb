@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Imie: </b>
+  <%= @pracownik.Imie %>
+</p>
+<p>
+  <b>Nazwisko: </b>
+  <%= @pracownik.Nazwisko %>
+</p>
+<p>
+  <b>Miasto: </b>
+  <%= @pracownik.Miasto %>
+</p>
+<p>
+  <b>Kod pocztowy: </b>
+  <%= @pracownik.KodPocztowy %>
+</p>
+<p>
+  <b>Adres: </b>
+  <%= @pracownik.Adres %>
+</p>
+<p>
+  <b>Data zatrudnienia: </b>
+  <%= @pracownik.DataZatrudnienia %>
+</p>
+<p>
+  <b>Data zwolnienia: </b>
+  <%= @pracownik.DataZwolnienia %>
+</p>
+<p>
+  <b>NIP: </b>
+  <%= @pracownik.NIP %>
+</p>
+<p>
+  <b>Telefon: </b>
+  <%= @pracownik.Telefon %>
+</p>
+<p>
+  <b>E-mail: </b>
+  <%= @pracownik.Email %>
+</p>
+
+<%= link_to 'Edycja', edit_pracownik_path(@pracownik) %> |
+<%= link_to 'Powrót', pracowniks_path %>

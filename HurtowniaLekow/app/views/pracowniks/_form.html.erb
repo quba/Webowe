@@ -1,0 +1,64 @@
+<%= form_for(@pracownik) do |f| %>
+  <% if @pracownik.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pracownik.errors.count, "error") %> prohibited this pracownik from being saved:</h2>
+
+      <ul>
+      <% @pracownik.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :Imie %><br />
+    <%= f.text_field :Imie %>
+  </div>
+  <div class="field">
+    <%= f.label :Nazwisko %><br />
+    <%= f.text_field :Nazwisko %>
+  </div>
+  <div class="field">
+    <%= f.label :Imie %><br />
+    <%= f.text_field :Imie %>
+  </div>
+  <div class="field">
+    <%= f.label :Miasto %><br />
+    <%= f.text_field :Miasto %>
+  </div>
+  <div class="field">
+    <%= f.label :Kod_Pocztowy %><br />
+    <%= f.text_field :KodPocztowy %>
+  </div>
+  <div class="field">
+    <%= f.label :Adres %><br />
+    <%= f.text_field :Adres %>
+  </div>
+  <div class="field">
+    <%= f.label :Data_Zatrudnienia %><br />
+    <%= f.date_select :DataZatrudnienia %>
+  </div>
+  <div class="field">
+    <%= f.label :Data_Zwolnienia %><br />
+    <%= f.date_select :DataZwolnienia %>
+  </div>
+  <div class="field">
+    <%= f.label :NIP %><br />
+    <%= f.text_field :NIP %>
+  </div>
+  <div class="field">
+    <%= f.label :Telefon %><br />
+    <%= f.text_field :Telefon %>
+  </div>
+  <div class="field">
+    <%= f.label :Email %><br />
+    <%= f.text_field :Email %>
+  </div>
+
+  
+  
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

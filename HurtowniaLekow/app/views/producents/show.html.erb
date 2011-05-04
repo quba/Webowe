@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nazwa:</b>
+  <%= @producent.NazwaProducenta %>
+</p>
+<p>
+  <b>Adres:</b>
+  <%= @producent.Adres %>
+</p>
+<p>
+  <b>Telefon</b>
+  <%= @producent.Telefon %>
+</p>
+<p>
+  <b>Ilość:</b>
+  <%= @producent.Email %>
+</p>
+
+
+<%= link_to 'Edycja', edit_producent_path(@producent) %> |
+<%= link_to 'Powrót', producents_path %>

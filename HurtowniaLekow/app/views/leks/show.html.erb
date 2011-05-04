@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nazwa:</b>
+  <%= @lek.NazwaLeku %>
+</p>
+<p>
+  <b>Producent:</b>
+  <%= @lek.producent.NazwaProducenta %>
+</p>
+<p>
+  <b>Cena:</b>
+  <%= @lek.Cena %>
+</p>
+<p>
+  <b>Ilość:</b>
+  <%= @lek.Ilosc %>
+</p>
+<%= link_to 'Edytuj', edit_lek_path(@lek) %> |
+<%= link_to 'Powrót', leks_path %>

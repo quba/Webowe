@@ -1,0 +1,33 @@
+<%= form_for(@lek) do |f| %>
+  <% if @lek.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@lek.errors.count, "error") %> prohibited this lek from being saved:</h2>
+
+      <ul>
+      <% @lek.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :Nazwa %><br />
+    <%= f.text_field :NazwaLeku %>
+  </div>
+  <div class="field">
+    <%= f.label :Producent %><br />
+    <%= collection_select(:lek, :producent_id, Producent.all, :id, :NazwaProducenta) %><br />    
+  </div>
+  <div class="field">
+    <%= f.label :Cena %><br />
+    <%= f.text_field :Cena %>
+  </div>
+  <div class="field">
+    <%= f.label :Ilość %><br />
+    <%= f.text_field :Ilosc %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,33 @@
+<%= form_for(@producent) do |f| %>
+  <% if @producent.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@producent.errors.count, "error") %> prohibited this producent from being saved:</h2>
+
+      <ul>
+      <% @producent.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="field">
+    <%= f.label :Nazwa %><br />
+    <%= f.text_field :NazwaProducenta %>
+  </div>
+  <div class="field">
+    <%= f.label :Adres %><br />
+    <%= f.text_field :Adres %><br />
+  </div>
+  <div class="field">
+    <%= f.label :Telefon %><br />
+    <%= f.text_field :Telefon %>
+  </div>
+  <div class="field">
+    <%= f.label :Email %><br />
+    <%= f.text_field :Email %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
