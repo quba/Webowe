@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110425102449) do
+ActiveRecord::Schema.define(:version => 20110503165358) do
 
   create_table "dostawy", :force => true do |t|
     t.integer "lek_id",         :null => false
@@ -20,23 +20,22 @@ ActiveRecord::Schema.define(:version => 20110425102449) do
     t.date    "DataRealizacji"
   end
 
-  add_index "dostawy", ["lek_id"], :name => "fk_dostawy_leki"
-
-  create_table "klients", :primary_key => "uzytkownik_id", :force => true do |t|
-    t.string "NazwaKlienta", :null => false
-    t.string "Miasto",       :null => false
-    t.string "KodPocztowy",  :null => false
-    t.string "Adres",        :null => false
-    t.string "NIP",          :null => false
-    t.string "REGON",        :null => false
-    t.string "Telefon",      :null => false
-    t.string "Email",        :null => false
+  create_table "klients", :force => true do |t|
+    t.integer "uzytkownik_id", :null => false
+    t.string  "NazwaKlienta",  :null => false
+    t.string  "Miasto",        :null => false
+    t.string  "KodPocztowy",   :null => false
+    t.string  "Adres",         :null => false
+    t.string  "NIP",           :null => false
+    t.string  "REGON",         :null => false
+    t.string  "Telefon",       :null => false
+    t.string  "Email",         :null => false
   end
 
   add_index "klients", ["NazwaKlienta"], :name => "index_klienci_on_NazwaKlienta", :unique => true
   add_index "klients", ["uzytkownik_id"], :name => "index_klienci_on_uzytkownik_id", :unique => true
 
-  create_table "leki", :force => true do |t|
+  create_table "leks", :force => true do |t|
     t.string  "NazwaLeku",    :null => false
     t.integer "producent_id", :null => false
     t.integer "Cena",         :null => false
@@ -44,24 +43,23 @@ ActiveRecord::Schema.define(:version => 20110425102449) do
     t.string  "Uwagi"
   end
 
-  add_index "leki", ["producent_id"], :name => "fk_leki_producenci"
-
-  create_table "pracowniks", :primary_key => "uzytkownik_id", :force => true do |t|
-    t.string "Nazwisko"
-    t.string "Imie"
-    t.string "Miasto",           :null => false
-    t.string "KodPocztowy",      :null => false
-    t.string "Adres",            :null => false
-    t.date   "DataZatrudnienia", :null => false
-    t.date   "DataZwolnienia",   :null => false
-    t.string "NIP",              :null => false
-    t.string "Telefon",          :null => false
-    t.string "Email",            :null => false
+  create_table "pracowniks", :force => true do |t|
+    t.integer "uzytkownik_id",    :null => false
+    t.string  "Nazwisko",         :null => false
+    t.string  "Imie",             :null => false
+    t.string  "Miasto",           :null => false
+    t.string  "KodPocztowy",      :null => false
+    t.string  "Adres",            :null => false
+    t.date    "DataZatrudnienia", :null => false
+    t.date    "DataZwolnienia"
+    t.string  "NIP",              :null => false
+    t.string  "Telefon",          :null => false
+    t.string  "Email",            :null => false
   end
 
   add_index "pracowniks", ["uzytkownik_id"], :name => "index_pracownicy_on_uzytkownik_id", :unique => true
 
-  create_table "producenci", :force => true do |t|
+  create_table "producents", :force => true do |t|
     t.string "NazwaProducenta", :null => false
     t.string "Adres",           :null => false
     t.string "Telefon",         :null => false
@@ -112,14 +110,12 @@ ActiveRecord::Schema.define(:version => 20110425102449) do
   end
 
   add_index "zamowienia", ["lek_id"], :name => "fk_zamowienia_leki"
-  add_index "zamowienia", ["uzytkownik_id"], :name => "fk_zamowienia_uzytkownicy"
 
   create_table "zamowienia_pracownicy", :id => false, :force => true do |t|
     t.integer "zamowienie_id", :null => false
     t.integer "uzytkownik_id", :null => false
   end
 
-  add_index "zamowienia_pracownicy", ["uzytkownik_id"], :name => "fk_zamowienia_pracownicy_uzytkownicy"
   add_index "zamowienia_pracownicy", ["zamowienie_id", "uzytkownik_id"], :name => "index_zamowienia_pracownicy_on_zamowienie_id_and_uzytkownik_id", :unique => true
 
 end

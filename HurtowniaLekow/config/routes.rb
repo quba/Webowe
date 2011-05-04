@@ -1,12 +1,26 @@
 HurtowniaLekow::Application.routes.draw do
 
+  resources :pracowniks
+
+  resources :producents
+
+  resources :leks
+
   devise_for :users
 
   get "stronaglowna/index"
+  
+  #get "/leks"
+  #get "/leks.xml"
+  #get "/leks/1"
+  #get "/leks/1.xml"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
   match '/' => 'stronaglowna#index', :as => :index
+  match '/leks' => 'leks#index', :as => :leksindex
+  match '/producents' => 'producents#index', :as => :producentsindex
+  match '/pracowniks' => 'pracowniks#index', :as => :pracowniksindex
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

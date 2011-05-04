@@ -1,6 +1,6 @@
 class CreateKlienci < ActiveRecord::Migration
   def self.up
-    create_table :klienci, :id => false do |t|
+    create_table :klienci do |t|
       t.references :uzytkownik, :null => false      
       t.string :NazwaKlienta, :null => false
       t.string :Miasto, :null => false
