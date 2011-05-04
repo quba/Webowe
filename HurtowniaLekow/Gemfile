@@ -9,6 +9,7 @@ gem 'mysql2'
 gem "compass", ">= 0.10.6"
 gem "devise"
 gem 'omniauth'
+gem 'client_side_validations'
 
 
 # potrzebne dla html2haml - funkcji konwertujacej pliki html do haml-owego formatu

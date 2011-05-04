@@ -1,19 +1,21 @@
 HurtowniaLekow::Application.routes.draw do
 
+
   resources :pracowniks
 
   resources :producents
 
   resources :leks
 
-  devise_for :users
+  devise_for :klients
+
+  devise_for :pracowniks
+
+
 
   get "stronaglowna/index"
   
-  #get "/leks"
-  #get "/leks.xml"
-  #get "/leks/1"
-  #get "/leks/1.xml"
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

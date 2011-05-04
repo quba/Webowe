@@ -10,7 +10,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+
 ActiveRecord::Schema.define(:version => 20110503165358) do
+# ActiveRecord::Schema.define(:version => 20110503220502) do
+
 
   create_table "dostawy", :force => true do |t|
     t.integer "lek_id",         :null => false
@@ -20,53 +23,11 @@ ActiveRecord::Schema.define(:version => 20110503165358) do
     t.date    "DataRealizacji"
   end
 
+  
+
+  add_index "dostawy", ["lek_id"], :name => "fk_dostawy_leki"
+
   create_table "klients", :force => true do |t|
-    t.integer "uzytkownik_id", :null => false
-    t.string  "NazwaKlienta",  :null => false
-    t.string  "Miasto",        :null => false
-    t.string  "KodPocztowy",   :null => false
-    t.string  "Adres",         :null => false
-    t.string  "NIP",           :null => false
-    t.string  "REGON",         :null => false
-    t.string  "Telefon",       :null => false
-    t.string  "Email",         :null => false
-  end
-
-  add_index "klients", ["NazwaKlienta"], :name => "index_klienci_on_NazwaKlienta", :unique => true
-  add_index "klients", ["uzytkownik_id"], :name => "index_klienci_on_uzytkownik_id", :unique => true
-
-  create_table "leks", :force => true do |t|
-    t.string  "NazwaLeku",    :null => false
-    t.integer "producent_id", :null => false
-    t.integer "Cena",         :null => false
-    t.integer "Ilosc",        :null => false
-    t.string  "Uwagi"
-  end
-
-  create_table "pracowniks", :force => true do |t|
-    t.integer "uzytkownik_id",    :null => false
-    t.string  "Nazwisko",         :null => false
-    t.string  "Imie",             :null => false
-    t.string  "Miasto",           :null => false
-    t.string  "KodPocztowy",      :null => false
-    t.string  "Adres",            :null => false
-    t.date    "DataZatrudnienia", :null => false
-    t.date    "DataZwolnienia"
-    t.string  "NIP",              :null => false
-    t.string  "Telefon",          :null => false
-    t.string  "Email",            :null => false
-  end
-
-  add_index "pracowniks", ["uzytkownik_id"], :name => "index_pracownicy_on_uzytkownik_id", :unique => true
-
-  create_table "producents", :force => true do |t|
-    t.string "NazwaProducenta", :null => false
-    t.string "Adres",           :null => false
-    t.string "Telefon",         :null => false
-    t.string "Email",           :null => false
-  end
-
-  create_table "users", :force => true do |t|
     t.string   "email",                               :default => "", :null => false
     t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
     t.string   "reset_password_token"
@@ -76,23 +37,75 @@ ActiveRecord::Schema.define(:version => 20110503165358) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "password_salt"
-    t.string   "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.integer  "failed_attempts",                     :default => 0
-    t.string   "unlock_token"
-    t.datetime "locked_at"
-    t.string   "authentication_token"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "NazwaKlienta"
+    t.string   "KodPocztowy"
+    t.string   "Adres"
+    t.string   "NIP"
+    t.string   "REGON"
+    t.string   "Telefon"
+
   end
 
-  add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
-  add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
-  add_index "users", ["unlock_token"], :name => "index_users_on_unlock_token", :unique => true
+  add_index "klients", ["NazwaKlienta"], :name => "index_klients_on_NazwaKlienta", :unique => true
+  add_index "klients", ["email"], :name => "index_klients_on_email", :unique => true
+  add_index "klients", ["reset_password_token"], :name => "index_klients_on_reset_password_token", :unique => true
+
+  create_table "leks", :force => true do |t|
+    t.string  "NazwaLeku",    :null => false
+    t.integer "producent_id", :null => false
+    t.integer "Cena",         :null => false
+    t.integer "Ilosc",        :null => false
+    t.string  "Uwagi"
+  end
+  
+  create_table "producents", :force => true do |t|
+    t.string "NazwaProducenta", :null => false
+    t.string "Adres",           :null => false
+    t.string "Telefon",         :null => false
+    t.string "Email",           :null => false
+  end
+
+  create_table "users", :force => true do |t|
+    
+  end
+
+  add_index "leki", ["producent_id"], :name => "fk_leki_producenci"
+
+  create_table "pracowniks", :force => true do |t|
+
+    t.string   "email",                               :default => "", :null => false
+    t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                       :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "Nazwisko"
+    t.string   "Imie"
+    t.string   "Miasto"
+    t.string   "KodPocztowy"
+    t.string   "Adres"
+    t.date     "DataZatrudnienia"
+    t.date     "DataZwolnienia"
+    t.string   "NIP"
+    t.string   "Telefon"
+  end
+
+  add_index "pracowniks", ["email"], :name => "index_pracowniks_on_email", :unique => true
+  add_index "pracowniks", ["reset_password_token"], :name => "index_pracowniks_on_reset_password_token", :unique => true
+
+  create_table "producenci", :force => true do |t|
+    t.string "NazwaProducenta", :null => false
+    t.string "Adres",           :null => false
+    t.string "Telefon",         :null => false
+    t.string "Email",           :null => false
+  end
 
   create_table "uzytkownicy", :force => true do |t|
     t.string  "Login", :null => false
@@ -118,4 +131,4 @@ ActiveRecord::Schema.define(:version => 20110503165358) do
 
   add_index "zamowienia_pracownicy", ["zamowienie_id", "uzytkownik_id"], :name => "index_zamowienia_pracownicy_on_zamowienie_id_and_uzytkownik_id", :unique => true
 
-end
+  end
