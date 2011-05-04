@@ -1,0 +1,46 @@
+<h2>Rejestracja pracownika</h2>
+
+<%= form_for(resource, :as => resource_name, :validate => true , :url => registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <p><%= f.label :email %><br />
+  <%= f.email_field :email %></p>
+
+  <p><%= f.label :password %><br />
+  <%= f.password_field :password %></p>
+
+  <p><%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation %></p>
+
+  <p><%= f.label "Nazwisko " %><br />
+  <%= f.text_field :Nazwisko %></p>
+  
+  <p><%= f.label "Imię " %><br />
+  <%= f.text_field :Imie %></p>
+
+  <p><%= f.label "Miasto " %><br />
+  <%= f.text_field :Miasto %></p>
+  
+  <p><%= f.label "Kod pocztowy" %><br />
+  <%= f.text_field :KodPocztowy %></p>
+  
+  <p><%= f.label "Adres " %><br />
+  <%= f.text_field :Adres %></p>
+  
+  <p><%= f.label "Data zatrudnienia " %><br />
+  <%= f.text_field :DataZatrudnienia %></p>
+  
+  <p><%= f.label "Data zwolnienia " %><br />
+  <%= f.text_field :DataZwolnienia %></p>
+  
+  <p><%= f.label "NIP " %><br />
+  <%= f.text_field :NIP %></p>
+  
+  <p><%= f.label "Telefon " %><br />
+  <%= f.text_field :Telefon %></p>
+  
+
+  <p><%= f.submit "Zarejestruj się" %></p>
+<% end %>
+
+<%= render :partial => "devise/shared/links" %>
