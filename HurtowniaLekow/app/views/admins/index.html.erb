@@ -12,18 +12,18 @@
   </tr>
 
 <% @pracowniks.each do |pracownik| %>
-  <tr>    
+  <tr>
     <td><%= pracownik.Imie %></td>
     <td><%= pracownik.Nazwisko %></td>
     <td><%= pracownik.Miasto %></td>
     <td><%= link_to 'Pokaż', pracownik %></td>
     <td><%= link_to 'Edytuj', edit_pracownik_path(pracownik) %></td>
     <td><%= link_to 'Usuń', pracownik, :confirm => 'Are you sure?', :method => :delete %></td>
-    
   </tr>
 <% end %>
 </table>
 
 <br />
-
-<%= link_to 'Nowy pracownik', new_pracownik_path %>
+<!--
+<%= link_to 'Nowy pracownik', new_editpracownik_path %>
+-->

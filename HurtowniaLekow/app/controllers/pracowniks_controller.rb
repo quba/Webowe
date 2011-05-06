@@ -1,6 +1,7 @@
 class PracowniksController < ApplicationController
   # GET /pracowniks
   # GET /pracowniks.xml
+  $a = 0
   def index
     @pracowniks = Pracownik.all
 
@@ -58,15 +59,28 @@ class PracowniksController < ApplicationController
   def update
     @pracownik = Pracownik.find(params[:id])
 
-    respond_to do |format|
-      if @pracownik.update_attributes(params[:pracownik])
-        format.html { redirect_to(@pracownik, :notice => 'Pracownik was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @pracownik.errors, :status => :unprocessable_entity }
+    if(@pracownik.is_a?(Admin))
+      @admin = Admin.find(params[:id])
+      respond_to do |format|
+        if @admin.update_attributes(params[:admin])
+          format.html { redirect_to(@admin, :notice => 'Admin was successfully updated.' ) }
+          format.xml  { head :ok }
+        else
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @admin.errors, :status => :unprocessable_entity }
+        end
       end
-    end
+    else
+      respond_to do |format|
+        if @pracownik.update_attributes(params[:pracownik])
+          format.html { redirect_to(@pracownik, :notice => 'Pracownik was successfully updated.' ) }
+          format.xml  { head :ok }
+        else
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @pracownik.errors, :status => :unprocessable_entity }
+        end
+      end      
+    end    
   end
 
   # DELETE /pracowniks/1

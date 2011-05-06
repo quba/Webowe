@@ -48,12 +48,13 @@
                           <li><%= link_to "Leki", :leksindex, :title => "Oferta leków naszej hurtowni" %> </li>
                           <li><%= link_to "Zamówienia", :index, :title => "Bieżące zamówienia" %> </li>
                           <li><%= link_to "Historia", :index, :title => "Historia zamówień" %> </li>
-                        <%- elsif pracownik_signed_in? %>
-                          <li><%= link_to "Zamówienia", :index, :title => "Zamówienia oczekujące na realizację" %> </li>
-                        <%- elsif klient_signed_in? %>
+                        <%- elsif pracownik_signed_in? and current_pracownik.type == "Admin" %>
                           <li><%= link_to "Producenci", :producentsindex, :title => "Zarządzaj producentami" %> </li>
                           <li><%= link_to "Pracownicy", :pracowniksindex, :title => "Zarządzaj pracownikami" %> </li>
                           <li><%= link_to "Leki", :leksindex, :title => "Zarządzaj lekami" %> </li>
+                        <%- elsif pracownik_signed_in? %>
+                          <li><%= link_to "Zamówienia", :index, :title => "Zamówienia oczekujące na realizację" %> </li>
+                        
 
                         <%- end %>
                 </ul>

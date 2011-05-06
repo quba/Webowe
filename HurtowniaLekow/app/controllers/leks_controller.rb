@@ -1,4 +1,7 @@
 class LeksController < ApplicationController
+
+
+   
   # GET /leks
   # GET /leks.xml
   def index

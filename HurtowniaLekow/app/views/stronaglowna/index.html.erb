@@ -1,12 +1,13 @@
 <h1>Hurtownia leków</h1>
+
             <div class="content">
             <%- if klient_signed_in? %>
             <%= "Witaj #{current_klient.email}!" %>
-                  <p><%= "Jesteś klientem." %></p>
+                  <p><%= "Jesteś klientem." %></p>            
+            <%- elsif pracownik_signed_in? and current_pracownik.type == "Admin" %> <!-- + typ == admin? -->
+                  <p><%= "Jesteś adminem, kierownikiem. " %></p>
             <%- elsif pracownik_signed_in? %>
                   <p><%= "Jesteś pracownikiem." %></p>
-            <%- elsif pracownik_signed_in? %> <!-- + typ == admin? -->
-                  <p><%= "Jesteś adminem, kierownikiem. " %></p>
             <%- else %>
                   <p><%= "Zaloguj się, by zacząć korzystać z funkcjonalności systemu." %> </p>
              <%- end %>

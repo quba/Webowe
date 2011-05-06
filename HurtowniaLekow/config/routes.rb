@@ -1,7 +1,9 @@
 HurtowniaLekow::Application.routes.draw do
 
 
-  resources :pracowniks
+  resources :pracowniks, :path => "/editpracowniks"
+
+  resources :admins, :controller => :pracowniks, :path => "/editpracowniks"
 
   resources :producents
 
@@ -11,18 +13,24 @@ HurtowniaLekow::Application.routes.draw do
 
   devise_for :pracowniks
 
-
-
+  devise_for :admins
+  
   get "stronaglowna/index"
   
-
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
   match '/' => 'stronaglowna#index', :as => :index
   match '/leks' => 'leks#index', :as => :leksindex
   match '/producents' => 'producents#index', :as => :producentsindex
-  match '/pracowniks' => 'pracowniks#index', :as => :pracowniksindex
+  match '/editpracowniks' => 'pracowniks#index', :as => :pracowniksindex
+  
+  #match '/editpracowniks/:id' => 'pracowniks#update'
+  #match '/editpracowniks/:id' => 'pracowniks#show'
+  #match '/editpracowniks/:id/edit' => 'pracowniks#edit'
+  
+  #match '/pracowniks/show' => 'pracowniks#show', :as => :pracownik_path
+  
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

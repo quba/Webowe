@@ -1,4 +1,4 @@
-<%= form_for(@pracownik) do |f| %>  
+<%= form_for(@pracownik) do |f| %>
   <% if @pracownik.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@pracownik.errors.count, "error") %> prohibited this pracownik from being saved:</h2>
@@ -19,19 +19,9 @@
     <%= f.text_field :Nazwisko %>
   </div>
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
+    <%= f.label :Imie %><br />
+    <%= f.text_field :Imie %>
   </div>
-  <%- if($a == 1) %>
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </div>  
-  <div>
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <%- end %>
   <div class="field">
     <%= f.label :Miasto %><br />
     <%= f.text_field :Miasto %>
@@ -47,7 +37,11 @@
   <div class="field">
     <%= f.label :Data_Zatrudnienia %><br />
     <%= f.date_select :DataZatrudnienia %>
-  </div>  
+  </div>
+  <div class="field">
+    <%= f.label :Data_Zwolnienia %><br />
+    <%= f.date_select :DataZwolnienia %>
+  </div>
   <div class="field">
     <%= f.label :NIP %><br />
     <%= f.text_field :NIP %>
@@ -56,6 +50,11 @@
     <%= f.label :Telefon %><br />
     <%= f.text_field :Telefon %>
   </div>
+  <div class="field">
+    <%= f.label :Email %><br />
+    <%= f.text_field :Email %>
+  </div>
+
   
   
 

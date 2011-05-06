@@ -10,10 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-
-ActiveRecord::Schema.define(:version => 20110503165358) do
-# ActiveRecord::Schema.define(:version => 20110503220502) do
-
+ActiveRecord::Schema.define(:version => 20110504122249) do
 
   create_table "dostawy", :force => true do |t|
     t.integer "lek_id",         :null => false
@@ -22,10 +19,6 @@ ActiveRecord::Schema.define(:version => 20110503165358) do
     t.date    "DataZamowienia", :null => false
     t.date    "DataRealizacji"
   end
-
-  
-
-  add_index "dostawy", ["lek_id"], :name => "fk_dostawy_leki"
 
   create_table "klients", :force => true do |t|
     t.string   "email",                               :default => "", :null => false
@@ -45,7 +38,6 @@ ActiveRecord::Schema.define(:version => 20110503165358) do
     t.string   "NIP"
     t.string   "REGON"
     t.string   "Telefon"
-
   end
 
   add_index "klients", ["NazwaKlienta"], :name => "index_klients_on_NazwaKlienta", :unique => true
@@ -59,22 +51,8 @@ ActiveRecord::Schema.define(:version => 20110503165358) do
     t.integer "Ilosc",        :null => false
     t.string  "Uwagi"
   end
-  
-  create_table "producents", :force => true do |t|
-    t.string "NazwaProducenta", :null => false
-    t.string "Adres",           :null => false
-    t.string "Telefon",         :null => false
-    t.string "Email",           :null => false
-  end
-
-  create_table "users", :force => true do |t|
-    
-  end
-
-  add_index "leki", ["producent_id"], :name => "fk_leki_producenci"
 
   create_table "pracowniks", :force => true do |t|
-
     t.string   "email",                               :default => "", :null => false
     t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
     t.string   "reset_password_token"
@@ -95,12 +73,13 @@ ActiveRecord::Schema.define(:version => 20110503165358) do
     t.date     "DataZwolnienia"
     t.string   "NIP"
     t.string   "Telefon"
+    t.string   "type"
   end
 
   add_index "pracowniks", ["email"], :name => "index_pracowniks_on_email", :unique => true
   add_index "pracowniks", ["reset_password_token"], :name => "index_pracowniks_on_reset_password_token", :unique => true
 
-  create_table "producenci", :force => true do |t|
+  create_table "producents", :force => true do |t|
     t.string "NazwaProducenta", :null => false
     t.string "Adres",           :null => false
     t.string "Telefon",         :null => false
@@ -131,4 +110,4 @@ ActiveRecord::Schema.define(:version => 20110503165358) do
 
   add_index "zamowienia_pracownicy", ["zamowienie_id", "uzytkownik_id"], :name => "index_zamowienia_pracownicy_on_zamowienie_id_and_uzytkownik_id", :unique => true
 
-  end
+end
