@@ -7,8 +7,11 @@
     <th>Cena</th>
     <th>Ilość</th>
     <th></th>
+    <%- if pracownik_signed_in? %>
     <th></th>
     <th></th>
+    <%- end %>
+    
   </tr>
 
 <% @leks.each do |lek| %>
@@ -17,16 +20,19 @@
     <td><%= lek.producent.NazwaProducenta %></td>
     <td><%= lek.Cena %></td>
     <td><%= lek.Ilosc %></td>
-    <td><%= link_to 'Pokaż', lek %></td>    
+    <td><%= link_to 'Pokaż', lek %></td>
+    <%- if pracownik_signed_in? %>
     <td><%= link_to 'Edytuj', edit_lek_path(lek) %></td>
-    <td><%= link_to 'Usuń', lek, :confirm => 'Czy na pewno?', :method => :delete %></td>
+    <td><%= link_to 'Usuń', lek, :confirm => 'Czy na pewno?', :method => :delete %></td
+    <%- end %>
     
   </tr>
 
-</table>
+
+<%- end %>
+  </table>
 
 <br />
-<%- end %>
 
 <%= link_to 'Nowy lek', new_lek_path %>
          

@@ -77,6 +77,7 @@ class LeksController < ApplicationController
   def destroy
     @lek = Lek.find(params[:id])
     @lek.destroy
+    
 
     respond_to do |format|
       format.html { redirect_to(leks_url) }

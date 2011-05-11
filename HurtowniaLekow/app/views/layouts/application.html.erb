@@ -35,6 +35,13 @@
             <%= link_to 'Wyloguj się', destroy_pracownik_session_path %>
               </p>
             </div>
+          <%- elsif klient_signed_in? %>
+            <div id="userpanel" class="tablebg">
+              <p>
+            <%= "Zalogowany jako #{current_klient.email}." %>
+            <%= link_to 'Wyloguj się', destroy_klient_session_path %>
+              </p>
+            </div>
           <%- else %>
             <%= link_to 'Zaloguj się', new_pracownik_session_path %>
           <%- end %>

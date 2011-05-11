@@ -11,7 +11,7 @@ HurtowniaLekow::Application.routes.draw do
 
   devise_for :klients
 
-  devise_for :pracowniks
+  devise_for :pracowniks, :controllers => { :registrations => "pracowniks/registrations" }
 
   devise_for :admins
   
