@@ -15,6 +15,7 @@
 
 
 <%= javascript_include_tag 'jquery-1.6', 'rails.validations', :defaults -%>
+<%= csrf_meta_tag %>
 
 </head>
 <body>
@@ -43,13 +44,14 @@
               </p>
             </div>
           <%- else %>
-            <%= link_to 'Zaloguj się', new_pracownik_session_path %>
+          <p>Witaj, zaloguj się jako <%= link_to 'klient', new_klient_session_path %>
+            bądź <%= link_to 'pracownik', new_pracownik_session_path %>, by móc zacząć korzystać z funkcjonalności systemu.</p>
           <%- end %>
         <p></p>
 	<div id="sidebar">
 		<ul>			
                         <li><%= link_to "Strona główna", :index, :title => "Przejście do strony głównej systemu" %> </li>
-                        <li><%= link_to "Podstrona", :index, :title => "Jakaś podstrona" %> </li>
+                        <li><%= link_to "O nas", :index, :title => "Informacje o hurtowni" %> </li>
 
                         <%- if klient_signed_in? %>
                           <li><%= link_to "Leki", :leksindex, :title => "Oferta leków naszej hurtowni" %> </li>
@@ -61,8 +63,12 @@
                           <li><%= link_to "Leki", :leksindex, :title => "Zarządzaj lekami" %> </li>
                         <%- elsif pracownik_signed_in? %>
                           <li><%= link_to "Zamówienia", :index, :title => "Zamówienia oczekujące na realizację" %> </li>
-                        
-
+                        <%- end %>
+                        <% if can? :manage, @pracownik %>
+                          <li><%= link_to "Zarejestruj pracownika", '/pracowniks/sign_up', :title => "Zarejestruj nowego pracownika" %> </li>
+                        <%- end %>
+                        <% if can? :manage, @admin %>
+                          <li><%= link_to "Zarejestruj administratora", '/admins/sign_up', :title => "Zarejestruj nowego administratora" %> </li>
                         <%- end %>
                 </ul>
 	</div>

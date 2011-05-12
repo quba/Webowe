@@ -1,4 +1,6 @@
 class ProducentsController < ApplicationController
+  load_and_authorize_resource
+
   # GET /producents
   # GET /producents.xml
   def index

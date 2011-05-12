@@ -13,7 +13,7 @@ HurtowniaLekow::Application.routes.draw do
 
   devise_for :pracowniks, :controllers => { :registrations => "pracowniks/registrations" }
 
-  devise_for :admins
+  devise_for :admins, :controllers => { :registrations => "admins/registrations" }
   
   get "stronaglowna/index"
   

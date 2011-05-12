@@ -6,12 +6,9 @@
     <th>Producent</th>
     <th>Cena</th>
     <th>Ilość</th>
-    <th></th>
-    <%- if pracownik_signed_in? %>
-    <th></th>
-    <th></th>
-    <%- end %>
-    
+    <% if can? :read, @lek %><th></th><%- end %>
+    <% if can? :update, @lek %><th></th><%- end %>
+    <% if can? :cancel, @lek %><th></th><%- end %>
   </tr>
 
 <% @leks.each do |lek| %>
@@ -20,19 +17,20 @@
     <td><%= lek.producent.NazwaProducenta %></td>
     <td><%= lek.Cena %></td>
     <td><%= lek.Ilosc %></td>
+    <% if can? :read, @lek %>
     <td><%= link_to 'Pokaż', lek %></td>
-    <%- if pracownik_signed_in? %>
-    <td><%= link_to 'Edytuj', edit_lek_path(lek) %></td>
-    <td><%= link_to 'Usuń', lek, :confirm => 'Czy na pewno?', :method => :delete %></td
     <%- end %>
-    
+    <% if can? :update, @lek %>
+    <td><%= link_to 'Edytuj', edit_lek_path(lek) %></td>
+    <%- end %>
+    <% if can? :cancel, @lek %>
+    <td><%= link_to 'Usuń', lek, :confirm => 'Czy na pewno?', :method => :delete %></td>
+    <%- end %>
   </tr>
-
-
 <%- end %>
   </table>
 
 <br />
-
+<% if can? :create, @lek %>
 <%= link_to 'Nowy lek', new_lek_path %>
-         
+<%- end %>

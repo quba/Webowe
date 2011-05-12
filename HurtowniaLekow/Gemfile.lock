@@ -33,6 +33,7 @@ GEM
     bcrypt-ruby (2.1.4)
     bcrypt-ruby (2.1.4-x86-mingw32)
     builder (2.1.2)
+    cancan (1.6.4)
     client_side_validations (3.0.4)
       activesupport (~> 3.0.0)
     compass (0.10.6)
@@ -143,6 +144,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  cancan
   client_side_validations
   compass (>= 0.10.6)
   devise

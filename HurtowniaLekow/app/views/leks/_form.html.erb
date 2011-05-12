@@ -1,4 +1,4 @@
-<%= form_for(@lek) do |f| %>
+<%= form_for(@lek, :validate => true) do |f| %>
   <% if @lek.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@lek.errors.count, "error") %> prohibited this lek from being saved:</h2>
