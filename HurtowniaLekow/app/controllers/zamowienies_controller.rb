@@ -44,16 +44,27 @@ class ZamowieniesController < ApplicationController
   # POST /zamowienies.xml
   def create
     @zamowieny = Zamowieny.new(params[:zamowieny])
+    
 
     respond_to do |format|
-      if @zamowieny.save
+      if(@zamowieny.Ilosc.nil?)
+        format.html { redirect_to(leks_url , :notice => 'Prosze wprowadzic ilosc leku.') }
+      elsif(@zamowieny.Ilosc < 10 or @zamowieny.Ilosc > Lek.find(@zamowieny.lek_id).Ilosc )
+        format.html { redirect_to(leks_url , :notice => 'Ilosc leku musi byc wieksza od 10 i mniejsza od ilosc leku w magazynie.') }
+      elsif @zamowieny.save
+        l = Lek.find(@zamowieny.lek_id)
+        l.Ilosc = l.Ilosc - @zamowieny.Ilosc
+        l.save
         format.html { redirect_to(@zamowieny, :notice => 'Zamowienie was successfully created.') }
         format.xml  { render :xml => @zamowieny, :status => :created, :location => @zamowieny }
+        
       else
-        format.html { render :action => "new" }
+        format.html { render :action => "index" }
         format.xml  { render :xml => @zamowieny.errors, :status => :unprocessable_entity }
       end
+      
     end
+    
   end
 
   # PUT /zamowienies/1

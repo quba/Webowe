@@ -4,7 +4,7 @@ class Zamowieny < ActiveRecord::Base
   validates :Ilosc, :presence => true
   validates :DataZamowienia, :presence => true
 
-  belongs_to  :uzytkownik
+  belongs_to :uzytkownik
   belongs_to :lek
   has_many :zamowienie_pracowniks
   has_many :pracowniks, :through => :zamowienie_pracowniks

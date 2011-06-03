@@ -9,7 +9,7 @@ class Ability
          if user.type == "Admin" # admin - moze wszsytko ;)
               can :manage, :all
          else # pracownik
-              can :manage, Zamowienie do |zamowienie| # zarzadza tylko zamowieniami pryzpisanymi do niego
+              can :manage, Zamowieny do |zamowienie| # zarzadza tylko zamowieniami pryzpisanymi do niego
                  zamowienie.try(:owner) == user
               end
          end
@@ -18,10 +18,13 @@ class Ability
          can :read, Lek # moze przegladać leki
          can :create, Zamowieny # moze zlozyc zamowienie
          can :new, Zamowieny # formularz skladania zamowienia
-         can :manage, Zamowieny #do |zamowienie| # moze wszystko ze swoim wlasnym zamowieniem
+         can :manage, Zamowieny
+         can :manage, Lek
+         #can :#do |zamowienie| # moze wszystko ze swoim wlasnym zamowieniem
             #zamowienie.try(:owner) == user
          #end
-       else # konto goscia
+       else 
+            # konto goscia
             # mozna by tu wpisac can :create, Klient ale po co, skoro tam zostawimy domyslne ustawienia dla devise,
             # czyli kazdy po prostu moze swoje konto utworzyc i nim zarzadzac prze /klients
        end

@@ -6,22 +6,31 @@
     <th>Nazwa</th>
     <th>Producent</th>
     <th>Cena</th>
-    <th>Ilość</th>
-    <th>Zamówienie</th>
+    <th>Ilość</th>    
+    
     <% if can? :read, @lek %><th></th><%- end %>
     <% if can? :update, @lek %><th></th><%- end %>
     <% if can? :cancel, @lek %><th></th><%- end %>
+    <% if klient_signed_in? %>
+    <th>Zamówienie</th>
+    <th></th>    
+    <% end  %>   
     
-    <th></th>
   </tr>
-<%=  form_for :zamowieny, @zamowieny, :action => :create do |f| %>
+
 <% @leks.each do |lek| %>
+  <%= form_for :zamowieny, @zamowieny, :url => { :action => "create", :controller => "zamowienies" }, :html => {:class => "nifty_form"} do |f|  %>
   <tr>    
     <td><%= lek.NazwaLeku %></td>
     <td><%= lek.producent.NazwaProducenta %></td>
     <td><%= lek.Cena %></td>
     <td><%= lek.Ilosc %></td>
-    <td><%= number_field_tag :quantity, '0', :maxlength => 5, :size => 5  %></td>
+    <% if klient_signed_in? %>
+      <td><%= f.number_field :Ilosc, :maxlength => 5, :size => 5  %></td>
+      <%= hidden_field_tag 'zamowieny[uzytkownik_id]', current_klient.id %>
+      <%= hidden_field_tag 'zamowieny[DataZamowienia]', Time.now %>
+      <%= hidden_field_tag 'zamowieny[lek_id]', lek.id %>
+    <% end %>
     <% if can? :read, @lek %>
     <td><%= link_to 'Pokaż', lek %></td>
     <%- end %>
@@ -31,10 +40,12 @@
     <% if can? :cancel, @lek %>
     <td><%= link_to 'Usuń', lek, :confirm => 'Czy na pewno?', :method => :delete %></td>
     <%- end %>
-    <td><%= link_to 'Zamów', new_zamowieny_path(:zamowieny => {:lek_id => lek.id, :Ilosc => 0}), :type => "submit"  %> </td>
-    <td><%= submit_tag 'Zamow' %></td>
+    <% if klient_signed_in? %>        
+    <td><%= submit_tag "Zamow", :confirm => 'Czy na pewno chcesz zamowic wybrany przez siebie lek?' %></td>
+    <% end %>
+    <%- end %>
   </tr>
-<%- end %>
+
   <% end %>
   </table>
 

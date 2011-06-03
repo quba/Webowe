@@ -21,9 +21,9 @@ class DropUsersKlientsPracowniks < ActiveRecord::Migration
 
       t.timestamps
     end
-    create_table(:users) do |t|
+    create_table(:klients) do |t|
     end
-    create_table(:users) do |t|
+    create_table(:pracowniks) do |t|
     end
   end
 end
