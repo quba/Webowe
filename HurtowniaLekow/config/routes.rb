@@ -1,6 +1,9 @@
 HurtowniaLekow::Application.routes.draw do
 
 
+  resources :zamowienies
+
+  
   resources :pracowniks, :path => "/editpracowniks"
 
   resources :admins, :controller => :pracowniks, :path => "/editpracowniks"
@@ -20,8 +23,10 @@ HurtowniaLekow::Application.routes.draw do
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
+  match '/zamowienies/new' => 'zamowienies#new'
   match '/' => 'stronaglowna#index', :as => :index
   match '/leks' => 'leks#index', :as => :leksindex
+  match '/zamowienies' => 'zamowienies#index', :as => :zamowieniesindex
   match '/producents' => 'producents#index', :as => :producentsindex
   match '/editpracowniks' => 'pracowniks#index', :as => :pracowniksindex
   

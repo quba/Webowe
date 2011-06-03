@@ -1,0 +1,37 @@
+<%= form_for(@zamowieny) do |f| %>
+  <% if @zamowieny.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@zamowieny.errors.count, "error") %> prohibited this zamowieny from being saved:</h2>
+
+      <ul>
+      <% @zamowieny.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        
+      <% end %>
+      </ul>
+    </div>
+  
+  <% end %>
+
+
+
+
+  
+  <div class="field">
+    <%= f.label :Lek %><br />
+    <%= collection_select(:zamowieny, :lek_id, Lek.all, :id, :NazwaLeku) %><br />
+  </div>
+  <div class="field">
+    <%= f.label :Ilość %><br />
+    <%= f.text_field :Ilosc, :value => @zamowieny.Ilosc %>
+  </div>
+
+  <%= hidden_field_tag 'zamowieny[uzytkownik_id]', current_klient.id %>
+ 
+  <%= hidden_field_tag 'zamowieny[DataZamowienia]', Time.now %>
+  
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,22 +1,27 @@
 
 <h1>Lista leków</h1>
+
 <table>
   <tr>
     <th>Nazwa</th>
     <th>Producent</th>
     <th>Cena</th>
     <th>Ilość</th>
+    <th>Zamówienie</th>
     <% if can? :read, @lek %><th></th><%- end %>
     <% if can? :update, @lek %><th></th><%- end %>
     <% if can? :cancel, @lek %><th></th><%- end %>
+    
+    <th></th>
   </tr>
-
+<%=  form_for :zamowieny, @zamowieny, :action => :create do |f| %>
 <% @leks.each do |lek| %>
   <tr>    
     <td><%= lek.NazwaLeku %></td>
     <td><%= lek.producent.NazwaProducenta %></td>
     <td><%= lek.Cena %></td>
     <td><%= lek.Ilosc %></td>
+    <td><%= number_field_tag :quantity, '0', :maxlength => 5, :size => 5  %></td>
     <% if can? :read, @lek %>
     <td><%= link_to 'Pokaż', lek %></td>
     <%- end %>
@@ -26,8 +31,11 @@
     <% if can? :cancel, @lek %>
     <td><%= link_to 'Usuń', lek, :confirm => 'Czy na pewno?', :method => :delete %></td>
     <%- end %>
+    <td><%= link_to 'Zamów', new_zamowieny_path(:zamowieny => {:lek_id => lek.id, :Ilosc => 0}), :type => "submit"  %> </td>
+    <td><%= submit_tag 'Zamow' %></td>
   </tr>
 <%- end %>
+  <% end %>
   </table>
 
 <br />

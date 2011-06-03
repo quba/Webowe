@@ -14,12 +14,13 @@ class Ability
               end
          end
        elsif defined?(user.email) # zarejestrowany klient
+         can :read, Zamowieny # moze przegladac zamowienia
          can :read, Lek # moze przegladać leki
-         can :create, Zamowienie # moze zlozyc zamowienie
-         can :new, Zamowienie # formularz skladania zamowienia
-         can :manage, Zamowienie do |zamowienie| # moze wszystko ze swoim wlasnym zamowieniem
-            zamowienie.try(:owner) == user
-         end
+         can :create, Zamowieny # moze zlozyc zamowienie
+         can :new, Zamowieny # formularz skladania zamowienia
+         can :manage, Zamowieny #do |zamowienie| # moze wszystko ze swoim wlasnym zamowieniem
+            #zamowienie.try(:owner) == user
+         #end
        else # konto goscia
             # mozna by tu wpisac can :create, Klient ale po co, skoro tam zostawimy domyslne ustawienia dla devise,
             # czyli kazdy po prostu moze swoje konto utworzyc i nim zarzadzac prze /klients

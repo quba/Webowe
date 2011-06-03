@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110504122249) do
+ActiveRecord::Schema.define(:version => 20110525130318) do
 
   create_table "dostawy", :force => true do |t|
     t.integer "lek_id",         :null => false
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(:version => 20110504122249) do
   create_table "leks", :force => true do |t|
     t.string  "NazwaLeku",    :null => false
     t.integer "producent_id", :null => false
-    t.integer "Cena",         :null => false
+    t.float   "Cena",         :null => false
     t.integer "Ilosc",        :null => false
     t.string  "Uwagi"
   end
@@ -92,7 +92,14 @@ ActiveRecord::Schema.define(:version => 20110504122249) do
     t.integer "Typ",   :null => false
   end
 
-  create_table "zamowienia", :force => true do |t|
+  create_table "zamowienia_pracownicy", :id => false, :force => true do |t|
+    t.integer "zamowienie_id", :null => false
+    t.integer "uzytkownik_id", :null => false
+  end
+
+  add_index "zamowienia_pracownicy", ["zamowienie_id", "uzytkownik_id"], :name => "index_zamowienia_pracownicy_on_zamowienie_id_and_uzytkownik_id", :unique => true
+
+  create_table "zamowienies", :force => true do |t|
     t.integer "uzytkownik_id",                     :null => false
     t.integer "lek_id",                            :null => false
     t.integer "Ilosc",                             :null => false
@@ -101,13 +108,6 @@ ActiveRecord::Schema.define(:version => 20110504122249) do
     t.date    "DataRealizacji"
   end
 
-  add_index "zamowienia", ["lek_id"], :name => "fk_zamowienia_leki"
-
-  create_table "zamowienia_pracownicy", :id => false, :force => true do |t|
-    t.integer "zamowienie_id", :null => false
-    t.integer "uzytkownik_id", :null => false
-  end
-
-  add_index "zamowienia_pracownicy", ["zamowienie_id", "uzytkownik_id"], :name => "index_zamowienia_pracownicy_on_zamowienie_id_and_uzytkownik_id", :unique => true
+  add_index "zamowienies", ["lek_id"], :name => "fk_zamowienia_leki"
 
 end

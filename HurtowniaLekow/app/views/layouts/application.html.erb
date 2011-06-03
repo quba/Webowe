@@ -55,7 +55,7 @@
 
                         <%- if klient_signed_in? %>
                           <li><%= link_to "Leki", :leksindex, :title => "Oferta leków naszej hurtowni" %> </li>
-                          <li><%= link_to "Zamówienia", :index, :title => "Bieżące zamówienia" %> </li>
+                          <li><%= link_to "Zamówienia", :zamowieniesindex, :title => "Bieżące zamówienia" %> </li>
                           <li><%= link_to "Historia", :index, :title => "Historia zamówień" %> </li>
                         <%- elsif pracownik_signed_in? and current_pracownik.type == "Admin" %>
                           <li><%= link_to "Producenci", :producentsindex, :title => "Zarządzaj producentami" %> </li>

@@ -1,0 +1,35 @@
+<h1>Listing zamowienies</h1>
+
+<table>
+  <tr>
+    <th>Lek</th>
+    <th>Ilość</th>
+    <th>Data zamówienia</th>
+    <th>Data realizacji</th>
+    <% if can? :read, @zamowieny %><th></th><%- end %>
+    <% if can? :update, @zamowieny %><th></th><%- end %>
+    <% if can? :cancel, @zamowieny %><th></th><%- end %>
+  </tr>
+
+<% @zamowienies.each do |zamowieny| %>
+  <tr>
+    <td><%= zamowieny.lek.NazwaLeku %></td>
+    <td><%= zamowieny.Ilosc %></td>
+    <td><%= zamowieny.DataZamowienia %></td>
+    <td><%= zamowieny.DataRealizacji %></td>
+    <% if can? :read, @zamowieny %>
+    <td><%= link_to 'Show', zamowieny %></td>
+    <%- end %>
+    <% if can? :update, @zamowieny %>
+    <td><%= link_to 'Edit', edit_zamowieny_path(zamowieny) %></td>
+    <%- end %>
+    <% if can? :cancel, @zamowieny %>
+    <td><%= link_to 'Destroy', zamowieny, :confirm => 'Are you sure?', :method => :delete %></td>
+    <%- end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nowe zamówienie', new_zamowieny_path %>

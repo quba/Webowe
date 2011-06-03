@@ -1,4 +1,4 @@
-class Zamowienie < ActiveRecord::Base
+class Zamowieny < ActiveRecord::Base
   validates :uzytkownik_id, :presence => true
   validates :lek_id, :presence => true
   validates :Ilosc, :presence => true
